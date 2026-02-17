@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartEarn Pro 2026 | طريقك نحو القمة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00f2fe; --secondary: #4facfe; --dark: #0f172a;
+            --card: #1e293b; --text: #f8fafc; --gold: #fbbf24; --success: #22c55e;
+            --danger: #ef4444; --light-text: #94a3b8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background-color: var(--dark); color: var(--text); line-height: 1.6; }
+
+        header {
+            background: rgba(30, 41, 59, 0.95); backdrop-filter: blur(15px);
+            padding: 15px 5%; position: fixed; width: 100%; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo { font-size: 1.8rem; font-weight: 900; background: linear-gradient(45deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* --- Motivational Quote Bar --- */
+        .quote-bar {
+            background: linear-gradient(to right, #1e40af, #1e293b);
+            padding: 10px; text-align: center; font-size: 0.9rem; color: var(--primary);
+            margin-top: 70px; border-bottom: 1px solid var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        .main-content { padding: 20px 5%; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 3fr 1fr; gap: 25px; }
+
+        /* --- Level & Motivation Badge --- */
+        .rank-badge {
+            background: var(--gold); color: #000; padding: 5px 15px; border-radius: 5px;
+            font-weight: bold; font-size: 0.8rem; margin-bottom: 10px; display: inline-block;
+        }
+
+        .intro-banner { 
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
+            padding: 40px; border-radius: 25px; margin-bottom: 30px; border: 1px solid var(--primary);
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .intro-banner::after {
+            content: "اربح الآن"; position: absolute; top: -10px; right: -10px;
+            font-size: 5rem; opacity: 0.03; font-weight: 900; transform: rotate(-20deg);
+        }
+
+        .section-title { margin: 40px 0 20px; display: flex; align-items: center; gap: 10px; font-size: 1.5rem; border-right: 4px solid var(--primary); padding-right: 15px; }
+
+        /* --- Cards --- */
+        .card { background: var(--card); border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; position: relative; }
+        .card:hover { transform: scale(1.02); border-color: var(--primary); }
+        .reward-tag { position: absolute; top: 15px; left: 15px; background: var(--success); color: white; padding: 2px 10px; border-radius: 10px; font-size: 0.8rem; font-weight: bold; }
+
+        /* --- Motivation Section --- */
+        .motivation-box {
+            background: rgba(34, 197, 94, 0.1); border: 1px solid var(--success);
+            padding: 20px; border-radius: 15px; margin-top: 30px;
+        }
+
+        .side-panel { display: flex; flex-direction: column; gap: 20px; }
+        .info-card { background: var(--card); padding: 20px; border-radius: 20px; font-size: 0.9rem; border-right: 4px solid var(--gold); }
+
+        .btn { padding: 12px 25px; border-radius: 12px; border: none; cursor: pointer; font-weight: bold; transition: 0.3s; width: 100%; }
+        .btn-primary { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: var(--dark); }
+        .btn-claim { background: var(--success); color: white; margin-top: 15px; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); }
+
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; }
+        .modal-content { background: var(--card); padding: 40px; border-radius: 30px; text-align: center; width: 90%; max-width: 500px; border: 2px solid var(--primary); }
+        
+        @keyframes pulse { 0% { opacity: 0.8; } 50% { opacity: 1; } 100% { opacity: 0.8; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">SMART EARN PRO</div>
+        <div class="stats-bar">
+            <div class="stat-badge"><i class="fas fa-coins"></i> <span id="balance">0.00</span>$</div>
+            <div class="stat-badge"><i class="fas fa-rocket"></i> ليفل <span id="lvl">1</span></div>
+        </div>
+    </header>
+
+    <div class="quote-bar" id="quote-bar">
+        <i class="fas fa-fire"></i> "كل ثانية تقضيها هنا تقربك من أول 100 دولار لك!"
+    </div>
+
+    <div class="main-content">
+        <main>
+            <section class="intro-banner">
+                <span class="rank-badge">كن بطلاً في عالم الأرباح</span>
+                <h1>اجعل وقتك يعمل لأجلك 💰</h1>
+                <p>أنت لا تشاهد إعلانات فحسب، أنت تبني مشروعك الصغير. كل نقرة هي خطوة نحو الحرية المالية.</p>
+                <div class="motivation-box">
+                    <strong><i class="fas fa-chart-line"></i> هل تعلم؟</strong>
+                    المستخدمون النشطون يربحون ما يصل إلى 15$ أسبوعياً عبر نظام الإحالة فقط!
+                </div>
+            </section>
+
+            <h2 class="section-title">استثمر دقائقك الآن</h2>
+            <div class="grid-ads" id="ads-container">
+                <div class="card">
+                    <span class="reward-tag">كاش سريع</span>
+                    <h4>فرصة ذهبية</h4>
+                    <p>شاهد هذا العرض الاستثماري واكسب فوراً.</p>
+                    <button class="btn btn-primary" onclick="openAd(15, 0.02)">أريد الربح الآن</button>
+                </div>
+                <div class="card">
+                    <span class="reward-tag">مكافأة كبرى</span>
+                    <h4>تحدي الـ 60 ثانية</h4>
+                    <p>أثبت جديتك واحصل على أعلى مكافأة في الساعة.</p>
+                    <button class="btn btn-primary" onclick="openAd(60, 0.10)">ابدأ التحدي</button>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 30px; background: #000; text-align: center;">
+                <h3 style="color:var(--gold)">💡 نصيحة المليونير</h3>
+                <p id="pro-tip">"السر في النجاح هو البدء، والسر في البدء هو تقسيم المهام الكبيرة إلى مهام صغيرة."</p>
+            </div>
+        </main>
+
+        <aside class="side-panel">
+            <div class="info-card">
+                <h4><i class="fas fa-trophy"></i> طموحك لا حدود له</h4>
+                <p>لقد أتممت اليوم <span id="daily-count">0</span> مهمة. استمر، أنت تتفوق على 80% من المستخدمين الآن!</p>
+            </div>
+
+            <div class="card referral-box" style="border: 2px solid var(--secondary);">
+                <h4><i class="fas fa-users-cog"></i> جيش الأرباح الخاص بك</h4>
+                <p>لماذا تتعب وحدك؟ ادعُ 10 أصدقاء وراقب رصيدك ينمو أثناء نومك. <strong>أنت القائد هنا!</strong></p>
+                <button class="btn btn-primary" style="margin-top:10px;">انسخ رابط النجاح</button>
+            </div>
+
+            <div class="info-card" style="border-right: 4px solid var(--success);">
+                <h4><i class="fas fa-check-double"></i> ضمان المصداقية</h4>
+                <p>نحن ندفع دائماً. انضم إلى أكثر من 50,000 رابح حول العالم وثق بخطواتك.</p>
+            </div>
+        </aside>
+    </div>
+
+    <div class="modal" id="adModal">
+        <div class="modal-content">
+            <h2 id="adStatus">صناعة المال تتطلب الصبر...</h2>
+            <div class="timer-val" id="timer">00</div>
+            <div style="background: #000; padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+                <p id="modal-motivation">استمر، أنت تصنع المال الآن! 💸</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let balance = 0.00;
+        let xp = 0;
+        let tasksDone = 0;
+
+        const quotes = [
+            "ثروتك تبدأ بنقرة واحدة.. لا تتوقف!",
+            "الناجحون هم من يستغلون كل دقيقة في يومهم.",
+            "تخيل ماذا يمكنك أن تشتري بأرباح الأسبوع القادم!",
+            "أنت الآن في طريقك لتصبح من كبار الرابحين."
+        ];
+
+        const modalQuotes = [
+            "المال يحب الصبورين.. انتظر قليلاً 💰",
+            "كل ثانية هنا تساوي ذهباً في محفظتك 🚀",
+            "أنت تقوم بعمل رائع، لا تغلق الصفحة!",
+            "نجاحك يبدأ بإنهاء هذه المهمة بنجاح ✅"
+        ];
+
+        // تغيير الجمل التحفيزية كل 10 ثواني
+        setInterval(() => {
+            document.getElementById('quote-bar').innerHTML = `<i class="fas fa-fire"></i> "${quotes[Math.floor(Math.random()*quotes.length)]}"`;
+        }, 10000);
+
+        function openAd(sec, reward) {
+            const modal = document.getElementById('adModal');
+            const timerEl = document.getElementById('timer');
+            const modalText = document.getElementById('modal-motivation');
+            
+            modalText.innerText = modalQuotes[Math.floor(Math.random()*modalQuotes.length)];
+            modal.style.display = 'flex';
+            
+            let timeLeft = sec;
+            timerEl.innerText = timeLeft;
+
+            const countdown = setInterval(() => {
+                timeLeft--;
+                timerEl.innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    modal.style.display = 'none';
+                    updateStats(reward);
+                }
+            }, 1000);
+        }
+
+        function updateStats(amt) {
+            balance += amt;
+            tasksDone++;
+            xp += 20;
+            
+            document.getElementById('balance').innerText = balance.toFixed(2);
+            document.getElementById('daily-count').innerText = tasksDone;
+            
+            // صوت أو تنبيه بسيط للتحفيز
+            if(tasksDone % 5 === 0) {
+                alert("رائع! لقد أنجزت 5 مهام متتالية. أنت وحش أرباح! 🔥");
+            }
+        }
+    </script>
+</body>
+</html>
